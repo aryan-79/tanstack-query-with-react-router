@@ -1,0 +1,38 @@
+# Build output
+dist
+build
+out
+public/build
+
+# Dependency directories
+node_modules
+.pnpm-store
+
+# Generated files
+coverage
+*.log
+*.lock
+package-lock.json
+yarn.lock
+
+# Environment and configuration
+.env
+.env.*
+!.env.example
+*.config.js
+*.config.ts
+
+# TypeScript build info
+*.tsbuildinfo
+
+# IDE and editor files
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+
+.github
