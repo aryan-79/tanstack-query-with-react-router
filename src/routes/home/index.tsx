@@ -58,9 +58,12 @@ const query = (page = '0', size = '10') =>
 
 export const loader =
   (queryClient: QueryClient) =>
-  //NOTE: this params is for path params only
-  async ({ params }: LoaderFunctionArgs) => {
-    console.log({ params });
+  //NOTE: this params is for path params only.
+  async ({ request, params }: LoaderFunctionArgs) => {
+    //NOTE: To get serach params
+    const url = new URL(request.url);
+    const searchParams = url.searchParams;
+    console.log({ request: request.url, params, searchParams: searchParams });
     await queryClient.ensureQueryData(query(params.page, params.size));
     return { params };
   };
