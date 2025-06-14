@@ -2,6 +2,7 @@ import { type QueryClient } from '@tanstack/react-query';
 import { Home, loader } from './home';
 import { useRouteError } from 'react-router';
 import type { RouteObject } from 'react-router';
+import { action, Login } from './auth/login';
 
 const routes = (queryClient: QueryClient) =>
   [
@@ -11,14 +12,19 @@ const routes = (queryClient: QueryClient) =>
       Component: Home,
       errorElement: <ErrorElement />,
     },
+    {
+      path: 'login',
+      Component: Login,
+      errorElement: <ErrorElement />,
+      action: action(queryClient),
+    },
+    {
+      index: true,
+      element: <div>Hello from home</div>,
+    },
   ] satisfies RouteObject[];
 
-export const arko_route = [
-  {
-    index: true,
-    element: <div>Hello from home</div>,
-  },
-] satisfies RouteObject[];
+export const arko_route = [] satisfies RouteObject[];
 
 function ErrorElement() {
   const error = useRouteError();
